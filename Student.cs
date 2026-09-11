@@ -1,7 +1,7 @@
 class Student(string name)
 {
     public string Name = name;
-    private List<Course> Courses = new();
+    public List<Course> Courses = new();
 
     public bool Join(Course course)
     {

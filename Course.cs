@@ -7,15 +7,39 @@ class Course(string name, int maxSeats)
     public bool Enroll(Student student)
     {
         if (Students.Count >= MaxSeats)
+        {
+            Console.WriteLine("Kursen är full");
             return false;
+        }
+
+        // If the student is already enrolled, enrollment is successful.
+        if (Students.Exists(s => student.Name.Equals(s.Name)))
+            return true;
 
         Students.Add(student);
+        student.Courses.Add(this);
         return true;
     }
 
     public bool Remove(Student student)
     {
-        return Students.Remove(student);
+        bool ret = false;
+        Student? s = Students.Find(s => s.Name.Equals(student.Name));
+        Course? c = student.Courses.Find(c => c.Name.Equals(Name));
+
+        if (s != null)
+        {
+            Students.Remove(s);
+            ret = true;
+        }
+
+        if (c != null)
+        {
+            student.Courses.Remove(c);
+            ret = true;
+        }
+
+        return ret;
     }
 
     public void RollCall()
