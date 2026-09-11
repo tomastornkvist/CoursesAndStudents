@@ -1,14 +1,8 @@
-class Course
+class Course(string name, int maxSeats)
 {
-    public string Name { get; private set; }
-    public int MaxSeats { get; private set; }
+    public string Name { get; private set; } = name;
+    public int MaxSeats { get; private set; } = maxSeats;
     private List<Student> Students = new();
-
-    public Course(string name, int maxSeats)
-    {
-        Name = name;
-        MaxSeats = maxSeats;
-    }
 
     public bool Enroll(Student student)
     {
