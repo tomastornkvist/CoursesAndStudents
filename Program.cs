@@ -33,39 +33,47 @@ void WriteTitle(string title)
 
 WriteTitle($"Studenter försöker komma in på {socialStudies.Name}");
 for (int i = 0; i < 4; i++)
-{
-    if (students[i].Join(socialStudies))
-        Console.WriteLine($"{students[i]} ska läsa {socialStudies}.");
-    else
-        Console.WriteLine($"{students[i]} kom inte in på {socialStudies}.");
-}
+    students[i].Join(socialStudies);
 
 WriteTitle($"{biology.Name} tar emot studenter");
 for (int i = students.Length - 1; i > 0; i -= 3)
-{
-    if (biology.Enroll(students[i]))
-        Console.WriteLine($"{students[i]} ska läsa {biology}.");
-    else
-        Console.WriteLine($"{students[i]} kom inte in på {biology}.");
-}
+    biology.Enroll(students[i]);
 
 WriteTitle($"{frank} försöker komma in på alla kurser");
 foreach (Course c in courses)
-{
-    if (frank.Join(c))
-        Console.WriteLine($"{frank} ska läsa {c}.");
-    else
-        Console.WriteLine($"{frank} kom inte in på {c}.");
-}
+    frank.Join(c);
 
+WriteTitle("Upprop för populerade kurser");
 foreach (Course c in courses)
 {
     if (c.StudentCount > 0)
         c.RollCall();
 }
 
+WriteTitle("Studenters scheman");
 foreach (Student s in students)
 {
     if (s.Courses.Count > 0)
         s.Schedule();
 }
+
+WriteTitle("Studenter försöker lämna kurser");
+frans.Leave(technology);
+frank.Leave(politics);
+frank.Leave(socialStudies);
+
+WriteTitle("Studenter blir borttagna från kurser");
+socialStudies.Remove(uma);
+socialStudies.Remove(frans);
+
+WriteTitle($"{tuva} försöker komma in på {socialStudies.Name} igen");
+tuva.Join(socialStudies);
+socialStudies.RollCall();
+tuva.Schedule();
+
+WriteTitle($"{frank} försöker komma in på alla kurser igen");
+foreach (Course c in courses)
+    frank.Join(c);
+foreach (Course c in courses)
+    c.RollCall();
+frank.Schedule();

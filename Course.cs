@@ -9,16 +9,20 @@ class Course(string name, int maxSeats)
     {
         if (Students.Count >= MaxSeats)
         {
-            Console.WriteLine("Kursen är full");
+            Console.WriteLine($"Kursen är full. {student} kom inte in på {this}.");
             return false;
         }
 
         // If the student is already enrolled, enrollment is successful.
         if (Students.Exists(s => student.Name.Equals(s.Name)))
+        {
+            Console.WriteLine($"{student} är redan antagen till {this}.");
             return true;
+        }
 
         Students.Add(student);
         student.Courses.Add(this);
+        Console.WriteLine($"{student} ska läsa {this}.");
         return true;
     }
 
@@ -40,6 +44,10 @@ class Course(string name, int maxSeats)
             ret = true;
         }
 
+        if (ret)
+            Console.WriteLine($"{student} har tagits bort från {this}.");
+        else
+            Console.WriteLine($"{student} var inte antagen till {this}.");
         return ret;
     }
 
