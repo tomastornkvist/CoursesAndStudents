@@ -15,6 +15,7 @@ class Student(string name)
 
     public void Schedule()
     {
+        Console.WriteLine($"\nSchema för {Name}:");
         Courses.ForEach(c => Console.WriteLine(c.Name));
     }
 

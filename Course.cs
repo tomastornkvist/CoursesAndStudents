@@ -2,6 +2,7 @@ class Course(string name, int maxSeats)
 {
     public string Name { get; private set; } = name;
     public int MaxSeats { get; private set; } = maxSeats;
+    public int StudentCount { get { return Students.Count; } }
     private List<Student> Students = new();
 
     public bool Enroll(Student student)
@@ -44,6 +45,7 @@ class Course(string name, int maxSeats)
 
     public void RollCall()
     {
+        Console.WriteLine($"\nKursdeltagare i {Name}:");
         Students.ForEach(s => Console.WriteLine(s));
     }
 
