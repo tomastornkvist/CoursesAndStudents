@@ -1,4 +1,5 @@
-﻿Course programming = new("Programmering", 3);
+﻿// Courses
+Course programming = new("Programmering", 3);
 Course socialStudies = new("Sociala studier", 3);
 Course politics = new("Politik", 3);
 Course society = new("Samhälle", 3);
@@ -7,6 +8,7 @@ Course technology = new("Teknik", 3);
 
 Course[] courses = { programming, socialStudies, politics, society, biology, technology };
 
+// Students
 Student frans = new("Frans");
 Student karla = new("Karla");
 Student tuva = new("Tuva");
@@ -24,12 +26,17 @@ Student mathilda = new("Mathilda");
 
 Student[] students = { frans, karla, tuva, fatimah, uma, frank, mans, tomas, peter, sara, willow, tereza, sandra, mathilda };
 
+// Writes an underlined title preceeded by an empty row
 void WriteTitle(string title)
 {
     Console.WriteLine();
     Console.WriteLine(title);
     Console.WriteLine(new string('-', title.Length));
 }
+
+///////////////////////////////////////////
+// Testing section begins here
+///////////////////////////////////////////
 
 WriteTitle($"Studenter försöker komma in på {socialStudies.Name}");
 for (int i = 0; i < 4; i++)
