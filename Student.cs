@@ -5,7 +5,8 @@
 class Student(string name)
 {
     public string Name = name;
-    public List<Course> Courses = new();
+    private List<Course> courses = [];
+    public List<Course> Courses { get { return courses; } }
 
     /// <summary>
     /// Tries to enroll a student into a course
@@ -32,8 +33,8 @@ class Student(string name)
     /// </summary>
     public void Schedule()
     {
-        Console.WriteLine($"\nSchema för {Name}:");
-        Courses.ForEach(c => Console.WriteLine(c.Name));
+        Console.WriteLine($"\nSchema för {this}:");
+        courses.ForEach(c => Console.WriteLine(c.Name));
     }
 
     /// <summary>
