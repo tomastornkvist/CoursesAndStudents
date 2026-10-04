@@ -18,7 +18,7 @@ class Course(string name, int maxSeats)
     public bool Enroll(Student student)
     {
         // If the student is already enrolled, enrollment is successful.
-        if (Students.Exists(s => student.Name.Equals(s.Name)))
+        if (Students.Exists(s => student == s))
         {
             Console.WriteLine($"{student} är redan antagen till {this}.");
             return true;

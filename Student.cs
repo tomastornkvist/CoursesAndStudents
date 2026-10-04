@@ -1,7 +1,7 @@
 /// <summary>
 /// Represents a student who wants to join/leave different courses
 /// </summary>
-/// <param name="name">Name of the student, must be unique</param>
+/// <param name="name">Name of the student</param>
 class Student(string name)
 {
     public string Name = name;
